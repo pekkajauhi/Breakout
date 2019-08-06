@@ -5,7 +5,7 @@ import random
 class Brick(Sprite):
     """A class to represent a single brick."""
 
-    def __init__(self, bo_settings, screen):
+    def __init__(self, bo_settings, screen, row_number):
         """Initialize the brick and set it's starting position."""
         super(Brick, self).__init__()
         self.screen = screen
@@ -16,8 +16,11 @@ class Brick(Sprite):
         self.rect.x = 0
         self.rect.y = self.rect.height*3
 
-        color = random.choice(bo_settings.brick_color)
-        self.color = color
+        if row_number == 0 or row_number == 8:
+            self.color = bo_settings.hard_brick_color
+        else:
+            color = random.choice(bo_settings.brick_color)
+            self.color = color
 
         if self.color == bo_settings.hard_brick_color:
             self.brick_health = bo_settings.hard_brick_health

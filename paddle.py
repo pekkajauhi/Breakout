@@ -42,3 +42,6 @@ class Paddle(Sprite):
     def draw_paddle(self):
         """Draw the paddle to the screen."""
         pygame.draw.rect(self.screen, self.color, self.rect)
+
+    def center_paddle(self):
+        self.center = self.screen_rect.centerx

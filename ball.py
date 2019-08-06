@@ -15,6 +15,7 @@ class Ball():
         self.rect = pygame.Rect(0, 0, bo_settings.ball_width, bo_settings.ball_height)
         self.rect.centerx = paddle.rect.centerx
         self.rect.bottom = paddle.rect.top
+        self.screen_rect = screen.get_rect()
 
 
         # Store the ball's position as a decimal value
@@ -22,6 +23,7 @@ class Ball():
         self.x = float(self.rect.x)
 
         self.color = bo_settings.ball_color
+        self.ball_speed_factor = bo_settings.ball_speed_factor
         self.ball_velocity = bo_settings.ball_velocity
         self.ball_angle = bo_settings.ball_angle
 
@@ -34,6 +36,12 @@ class Ball():
         self.rect.x = self.x
         self.rect.y = self.y
 
+    def center_ball(self, bo_settings):
+        """Center the ball on the screen."""
+        self.y = 400
+        self.x = 500
+        self.ball_velocity = bo_settings.ball_speed_factor
+        self.ball_angle = 0
 
 
     def draw_ball(self):
